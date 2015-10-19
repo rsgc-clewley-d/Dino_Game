@@ -6,20 +6,21 @@ float dinoY;     // tracks position of dino
 float dinoS;     // tracks speed of dino
 float dinoA;     // tracks acceleration of the dino
 float gravity; 
+float distance;  // tracj distance betwen dino and and a cactus
 // this function runs once only
 void setup() {
   // draw the canvas
   size(800, 200);
-  
+
   // set the initial position of the cactus
   x1 = 900; // position it off-screen on the right
-  
+
   // set the intial acceleration
   a1 = -0.1;
-  
+
   // set gravity
   gravity = 0.005;
-  
+
   // set the initial speed
   s1 = -1;
 }
@@ -28,46 +29,60 @@ void setup() {
 void draw() {
   // background clears each time the program loops
   background(255);
-  
+
   // draw a circle at bottom right corner of the screen
   //       x    y    w   h
   ellipse(x1, 175, 50, 50);
-  
+
   // change the speed
   s1 = s1 + a1;
-  
+
   // create the appearance of moving by changing the x position
   x1 = x1 + s1;
-  
+
   // put the cactus back on the right edge if it goes off the left edge
   if (x1 < -25) {
-     x1 = 900; // place off screen on right 
-     s1 = -1;  // reset the speed (to avoid insanely fast movement)
+    x1 = 900; // place off screen on right 
+    s1 = -1;  // reset the speed (to avoid insanely fast movement)
   }
   //status updates
   fill(0);
+  textSize(12);
   text("dinoY is " + dinoY, 150, 25);
   text("dinoS is " + dinoS, 150, 50);
   text("dinoA is " + dinoA, 150, 75);
-  
+  text("distance is " + distance, 150, 100);
+
+  //determind whether there is a hit
+  float a = dinoY - 175;
+  float b = 50 - x1;
+  distance = sqrt( pow(a, 2) + pow(b, 2) );
+
+  if (distance < (30 + 25) )
+  {  
+    textSize(80);
+    text("HIT", 100, 100);
+    }
+
+
   //move the dino
   dinoA = dinoA + gravity;
   dinoS = dinoS + dinoA;
   dinoY = dinoY + dinoS;
-  
+
   // stop the dino if it hits the ground
   if (dinoY > 170) { // bottom of the screen (200) minus the radius of (30)
     dinoA = 0;
     dinoS = 0;
     dinoY = 170;
   }
-  
+
   //draw the dino
   ellipse(50, dinoY, 60, 60);
 }  
-  //respond to keypress
-  void keyPressed() {
-   
-  
-  dinoA = -1;
+//respond to keypress
+void keyPressed() {
+
+
+  dinoA = -0.1;
 }
