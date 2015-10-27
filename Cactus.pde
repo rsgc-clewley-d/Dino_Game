@@ -35,4 +35,12 @@ class Cactus {
 
     ellipse(x1, 175, 50, 50);
   }
+  
+  //getX
+  //Purpose is to return the x position of the cactus
+  float getX() {
+    
+    return x1;
+  }
+  
 }
