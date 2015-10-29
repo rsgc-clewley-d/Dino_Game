@@ -15,6 +15,23 @@ class Dinosaur {
 
   void update (float gravity) {
 
+   //status updates
+  fill(0);
+  textSize(12);
+  text("dinoY is " + dinoY, 150, 25);
+  text("dinoS is " + dinoS, 150, 50);
+  text("dinoA is " + dinoA, 150, 75);
+  text("distance is " + distance, 150, 100);
+    
+  //determind whether there is a hit
+  //float a = dinoY - 175;
+  //float b = 50 - c1.getX();
+  //distance = sqrt( pow(a, 2) + pow(b, 2) );
+
+  //if (distance < (30 + 25) )
+  //textSize(80);
+  //text("HIT", 100, 100);
+  
     //move the dino
 
     dinoA = dinoA + gravity;
