@@ -27,17 +27,12 @@ void draw() {
 
   // draw the cactus 
   c1.update(gravity);
-
-
- 
 }
 
 
+//respond to keypress
+void keyPressed() {
 
 
-////respond to keypress
-//void keyPressed() {
-
-
-//  dinoA = -0.1;
-//}
+  dinoA = -0.1;
+}
